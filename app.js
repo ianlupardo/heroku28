@@ -1,15 +1,13 @@
 const express = require('express');
-
-const app = express()
+const app = express();
 
 app.use(express.static('public'));
 
 
-app.get('/', (req, res,) => {
-    res.send('Funcionado');
-    });
-    
-    app.listen(3000, () => 
-    console.log('Server funcionando bien'))
+app.listen (process.env.PORT ||3000, ()=>{
+    console.log('Servidor funcionando bien');
+});
 
-    
+app.get('/', (req,res)=>{
+    res.sendFile(__dirname + '/views/home.html');
+});
